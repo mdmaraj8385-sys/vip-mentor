@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080b18">
+<title>VIP MENTOR — Gmail Farmer Admin Panel</title>
+<style>
+:root{--bg:#080b18;--panel:#10152b;--panel2:#151b36;--line:#30365f;--blue:#4ea5ff;--purple:#a855f7;--text:#f4f6ff;--muted:#9ba6c8;--green:#5ce1b6}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -10%,#242052 0,transparent 42%),var(--bg);font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif;color:var(--text);min-height:100vh}
+.app{width:min(100%,760px);margin:auto;padding:16px 14px 32px}
+.top{display:flex;align-items:center;gap:12px;padding:10px 2px 18px}.logo{height:46px;width:46px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(140deg,#5832b8,#147edb);box-shadow:0 0 24px #6b49f755;font-size:24px}.brand{font-size:18px;font-weight:850;letter-spacing:1.5px}.brand span{color:#75baff}.sub{font-size:11px;color:var(--muted);letter-spacing:1.2px}.status{margin-left:auto;border:1px solid #3c4471;border-radius:20px;padding:6px 9px;font-size:10px;color:#5ce1b6;white-space:nowrap}
+.hero{padding:19px;border-radius:20px;border:1px solid #4b4c89;background:linear-gradient(120deg,#181a3b,#10172f 65%,#211340);position:relative;overflow:hidden;box-shadow:0 0 28px #713cff1c}.hero h1{font-size:25px;line-height:1.2;margin:8px 0}.hero p{font-size:12px;line-height:1.7;color:#b7c1df;margin:0;max-width:430px}.glowline{height:3px;border-radius:5px;background:linear-gradient(90deg,#4e9eff,#d35dff,#4e9eff);margin-top:18px;box-shadow:0 0 12px #a855f7}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0 20px}.stat{padding:14px;border:1px solid var(--line);border-radius:15px;background:linear-gradient(145deg,#171b39,#0f1428)}.stat .label{font-size:11px;color:var(--muted)}.stat .value{font-size:24px;font-weight:800;margin:7px 0 3px}.hint{font-size:10px;color:#7f8db7}
+.section-head{display:flex;justify-content:space-between;align-items:center;margin:22px 2px 12px;gap:10px}.section-head h2{font-size:15px;margin:0}.section-head small{font-size:11px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.navcard{min-height:100px;padding:13px;border:1px solid #30385f;border-radius:16px;background:linear-gradient(145deg,#171c39,#0d1326);color:var(--text);text-align:left;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;gap:12px;transition:.18s}.navcard:active{transform:scale(.98)}.navcard.selected{border-color:#6b8eff;box-shadow:0 0 17px #5a63ff22}.navtop{display:flex;align-items:center;justify-content:space-between}.icon{height:36px;width:36px;border-radius:12px;background:#22234a;border:1px solid #44457d;display:grid;place-items:center;font-size:19px}.arrow{color:#8f9dca}.navcard b{font-size:13px}.navcard small{display:block;color:var(--muted);font-size:10px;margin-top:3px}
+.panel{margin-top:18px;border:1px solid #343b65;border-radius:18px;background:linear-gradient(145deg,#11172c,#0b1020);padding:16px;min-height:160px}.panel h2{font-size:17px;margin:0 0 6px}.panel .desc{font-size:12px;line-height:1.65;color:var(--muted);margin:0 0 15px}.row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #252c49;font-size:12px}.row:last-child{border-bottom:0}.muted{color:var(--muted)}.tag{font-size:10px;padding:5px 8px;border-radius:20px;background:#172e4a;color:#93caff;border:1px solid #294c79}
+button,input,textarea,select{font:inherit}button.primary,button.secondary{border-radius:11px;padding:11px 13px;min-height:42px;cursor:pointer;font-size:12px}button.primary{border:0;background:linear-gradient(100deg,#286ce2,#8b48ee);color:white;font-weight:750;box-shadow:0 5px 20px #3d52d52b}button.secondary{border:1px solid #3b456f;background:#171d37;color:#e3e8ff}label{display:block;color:#aeb9db;font-size:11px;margin:10px 0 5px}input,textarea,select{display:block;width:100%;min-width:0;border:1px solid #343e67;background:#090f20;color:white;border-radius:10px;padding:12px;font-size:16px;margin-bottom:10px}textarea{resize:vertical}.task{border:1px solid #313b65;background:#131a32;border-radius:13px;padding:13px;margin-top:10px}.task-title{font-size:13px;font-weight:700}.task-desc{font-size:11px;color:var(--muted);line-height:1.6;margin:6px 0}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.notice{border:1px solid #245e52;background:#102923;color:#a8f2d9;padding:10px;border-radius:10px;font-size:12px;margin:10px 0}.foot{text-align:center;color:#657294;font-size:10px;line-height:1.7;margin:22px 0 4px}
+@media(min-width:600px){.app{padding:24px}.stats{grid-template-columns:repeat(4,minmax(0,1fr))}.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{padding:25px}.hero h1{font-size:30px}.navcard{min-height:112px}}
+</style>
+</head>
+<body>
+<main class="app">
+<header class="top"><div class="logo">♛</div><div><div class="brand">VIP <span>MENTOR</span></div><div class="sub">GMAIL FARMER ADMIN</div></div><div class="status" id="systemStatus">● LIVE CONNECTED</div></header>
+<section class="hero"><div class="eyebrow">WELCOME BACK, ADMIN</div><h1>VIP Control Center</h1><p>জিমেইল ফার্মিং কার্ড এবং অ্যাকাউন্ট ম্যানেজমেন্ট প্যানেল।</p><div class="glowline"></div></section>
+<div class="stats">
+<div class="stat"><div class="label">TOTAL USERS</div><div class="value" id="statUsers">0</div><div class="hint">রিয়েল ইউজার</div></div>
+<div class="stat"><div class="label">GMAIL CARDS</div><div class="value" id="statTasks">0</div><div class="hint">মজুদ কার্ড</div></div>
+<div class="stat"><div class="label">PENDING</div><div class="value" id="statPending">0</div><div class="hint">রিভিউ বাকি</div></div>
+<div class="stat"><div class="label">HOLD BALANCE</div><div class="value" id="৳0">৳0</div><div class="hint">হোল্ড ব্যালেন্স</div></div>
+</div>
+<div class="section-head"><h2>ADMIN MENU</h2><small>যেকোনো কার্ডে চাপ দাও ↘</small></div>
+<div class="grid" id="menu">
+<button class="navcard selected" data-page="dashboard"><div class="navtop"><span class="icon">▦</span><span class="arrow">↗</span></div><div><b>Dashboard</b><small>Overview & analytics</small></div></button>
+<button class="navcard" data-page="gmail"><div class="navtop"><span class="icon">✉</span><span class="arrow">↗</span></div><div><b>Gmail Cards</b><small>Add Farmer Cards</small></div></button>
+<button class="navcard" data-page="users"><div class="navtop"><span class="icon">♙</span><span class="arrow">↗</span></div><div><b>Users</b><small>User overview</small></div></button>
+<button class="navcard" data-page="balance"><div class="navtop"><span class="icon">৳</span><span class="arrow">↗</span></div><div><b>Balance</b><small>Hold & available</small></div></button>
+<button class="navcard" data-page="withdraw"><div class="navtop"><span class="icon">⇧</span><span class="arrow">↗</span></div><div><b>Withdraw</b><small>Requests & fees</small></div></button>
+<button class="navcard" data-page="review"><div class="navtop"><span class="icon">✓</span><span class="arrow">↗</span></div><div><b>Task Review</b><small>Approve submissions</small></div></button>
+<button class="navcard" data-page="history"><div class="navtop"><span class="icon">◷</span><span class="arrow">↗</span></div><div><b>History</b><small>Activity records</small></div></button>
+<button class="navcard" data-page="settings"><div class="navtop"><span class="icon">⚙</span><span class="arrow">↗</span></div><div><b>Settings</b><small>Panel & Bot config</small></div></button>
+</div>
+<section class="panel" id="panel" aria-live="polite"><h2>▦ Dashboard Overview</h2><p class="desc">জিমেইল ফার্মিং কার্ডগুলো এখান থেকে ম্যানেজ করুন।</p><div class="row"><span>System status</span><span class="tag">ACTIVE</span></div><div class="row"><span>Available Gmail Cards</span><b id="dashCards">0 টি</b></div></section>
+<div class="foot">VIP MENTOR • BLACK + BLUE / PURPLE GLOW<br>জিমেইল ফার্মিং বট ও অ্যাডমিন প্যানেল।</div>
+</main>
+<script>
+(function(){
+const panel=document.getElementById('panel'),menu=document.getElementById('menu');let tasks=[];let submissions=[];let totalUsersCount=0;let notice='';
+let supportUser = localStorage.getItem('support_username') || 'FS_OWNAR';
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function updateStats(){
+    document.getElementById('statUsers').textContent = totalUsersCount;
+    document.getElementById('statTasks').textContent = tasks.length;
+    document.getElementById('statPending').textContent = submissions.filter(x=>x.status==='Pending').length;
+    if(document.getElementById('dashCards')) document.getElementById('dashCards').textContent = tasks.length + ' টি';
+}
+function render(page){document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('selected',b.dataset.page===page));let h='';
+if(page==='dashboard')h=`<h2>▦ Dashboard Overview</h2><p class="desc">ফ্রি জিমেইল ফার্মিং কার্ড ম্যানেজমেন্ট সিস্টেম।</p><div class="row"><span>System status</span><span class="tag">ACTIVE</span></div><div class="row"><span>Total Gmail Cards</span><b>${tasks.length}</b></div><div class="row"><span>Pending Submissions</span><b>${submissions.filter(x=>x.status==='Pending').length}</b></div>`;
+if(page==='gmail')h=`<h2>✉ Gmail Farmer Cards Manager</h2><p class="desc">জিমেইল ফার্মার বট ডাটা অনুযায়ী কার্ড যুক্ত করুন। একটি কার্ড একবার ব্যবহার হলে সেটি আর অন্য ইউজারের কাছে যাবে না।</p><form id="taskForm"><label>First Name (প্রথম নাম)</label><input id="fname" required placeholder="যেমন: Florene"><label>Last Name (শেষ নাম)</label><input id="lname" required placeholder="যেমন: ✖️ বা পদবী"><label>Target Email (জিমেইল এড্রেস)</label><input id="email" required placeholder="mizelowek62@gmail.com"><label>Password (পাসওয়ার্ড)</label><input id="password" required placeholder="zyZcNAIffkjCJ3B"><label>Year of Birth (জন্ম সাল)</label><input id="birth" required placeholder="2000"><label>Reward Amount (BDT / USD)</label><input id="reward" required placeholder="৳22.13 (~0.18$)"><button class="primary" type="submit">＋ Add Gmail Card</button></form><div class="section-head"><h2>Available Cards in Stock (${tasks.length})</h2></div>${tasks.length?tasks.map((t,i)=>`<div class="task"><div class="task-title">📧 ${esc(t.email)} <span class="tag">${esc(t.reward)}</span></div><div class="task-desc">👤 Name: ${esc(t.fname)} ${esc(t.lname)}<br>🔑 Pass: <code>${esc(t.password)}</code><br>📅 Birth Year: ${esc(t.birth)}</div><button class="secondary" data-remove="${i}">Delete Card</button></div>`).join(''):'<p class="desc">স্টকে কোনো জিমেইল কার্ড নেই। নতুন কার্ড যোগ করুন।</p>'}`;
+if(page==='users')h=`<h2>♙ Users</h2><p class="desc">বট ব্যবহারকারী রিয়েল ইউজার তালিকা।</p><div class="row"><span>Total registered users</span><b>${totalUsersCount}</b></div><div class="row"><span>Admin User</span><span class="tag">@FS_OWNAR</span></div>`;
+if(page==='balance')h=`<h2>৳ Balance Control</h2><p class="desc">হোল্ড ও অ্যাভেলেবল ব্যালেন্স ম্যানেজমেন্ট।</p><div class="row"><span>Available balance</span><b>৳0</b></div><div class="row"><span>Hold balance</span><b>৳0</b></div>`;
+if(page==='withdraw')h=`<h2>⇧ Withdraw Requests</h2><p class="desc">ইউজারদের পেমেন্ট রিকোয়েস্ট ও নম্বরসমূহ।</p><p class="desc">বর্তমানে কোনো উইথড্র রিকোয়েস্ট নেই।</p>`;
+if(page==='review')h=`<h2>✓ Task Review</h2><p class="desc">ইউজারদের সাবমিট করা কাজগুলো এখানে রিভিউ করুন।</p>${submissions.length?submissions.map((s,i)=>`<div class="task"><div class="task-title">${esc(s.title)}</div><div class="task-desc">Reward: ${esc(s.reward)} · Status: ${esc(s.status)}</div>${s.status==='Pending'?`<div class="actions"><button class="primary" data-review="approve" data-i="${i}">Approve</button><button class="secondary" data-review="reject" data-i="${i}">Reject</button></div>`:''}</div>`).join(''):'<p class="desc">কোনো পেন্ডিং সাবমিশন নেই।</p>'}`;
+if(page==='history')h=`<h2>◷ History</h2><p class="desc">সকল অ্যাক্টিভিটি ও লেনদেনের রেকর্ড।</p><div class="row"><span>Cards published</span><b>${tasks.length}</b></div><div class="row"><span>Review records</span><b>${submissions.length}</b></div>`;
+if(page==='settings')h=`<h2>⚙ Settings</h2><p class="desc">বট এবং প্যানেল কনফিগারেশন।</p><label>Support Telegram Username (সাপোর্ট ইউজারনেম)</label><input id="supportUsername" value="${esc(supportUser)}" maxlength="50" placeholder="FS_OWNAR"><label>Panel Name</label><input id="panelName" value="VIP MENTOR" maxlength="50"><button class="primary" id="saveSettings">Save Settings</button>`;
+panel.innerHTML=(notice?`<div class="notice">${esc(notice)}</div>`:'')+h;notice='';
+updateStats();
+}
+menu.addEventListener('click',e=>{const b=e.target.closest('[data-page]');if(b)render(b.dataset.page)});
+panel.addEventListener('submit',e=>{if(e.target.id!=='taskForm')return;e.preventDefault();const fname=document.getElementById('fname').value.trim(),lname=document.getElementById('lname').value.trim(),email=document.getElementById('email').value.trim(),password=document.getElementById('password').value.trim(),birth=document.getElementById('birth').value.trim(),reward=document.getElementById('reward').value.trim();if(!email||!password)return;tasks.unshift({fname,lname,email,password,birth,reward,title:email});notice='নতুন জিমেইল কার্ড স্টকে যোগ হয়েছে!';render('gmail')});
+panel.addEventListener('click',e=>{const r=e.target.closest('[data-remove]');if(r){tasks.splice(Number(r.dataset.remove),1);notice='কার্ড মুছে ফেলা হয়েছে।';render('gmail');return}const a=e.target.closest('[data-review]');if(a){const s=submissions[Number(a.dataset.i)];if(s){s.status=a.dataset.review==='approve'?'Approved':'Rejected';notice='স্ট্যাটাস আপডেট হয়েছে।';render('review')}return}if(e.target.id==='saveSettings'){supportUser=document.getElementById('supportUsername').value.trim()||'FS_OWNAR';localStorage.setItem('support_username',supportUser);notice='সফলভাবে সেটিংস সংরক্ষিত হয়েছে!';render('settings')}});
+render('dashboard');
+})();
+</script>
+</body>
+  </html>
+  
